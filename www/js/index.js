@@ -59,9 +59,11 @@ function initSlidebar() {
         if (sidebar_open) {
             snapper.close('left');
             sidebar_open = false;
+            document.getElementById("open-left").style.backgroundImage = "url('img/open.png')";
         } else {
             snapper.open('left');
             sidebar_open = true;
+            document.getElementById("open-left").style.backgroundImage = "url('img/close.png')";
         }
     });
 }
