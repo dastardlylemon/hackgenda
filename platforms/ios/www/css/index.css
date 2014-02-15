@@ -141,6 +141,24 @@ h1 {
 .topcoat-navigation-bar {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
     z-index: 5;
+}
+
+.snap-drawer-left {
+    background-color: #545454;
+}
+
+.snap-drawer-left .topcoat-list__item {
+    color: #fff;
+    border-top: 0px solid #fff;
+}
+
+#open-left {
+    font-size: 40px;
+    float: left;
+    position: absolute;
+    top: 5px;
+    left: 10px;
 }
