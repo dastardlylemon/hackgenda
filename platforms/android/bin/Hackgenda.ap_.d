@@ -153,6 +153,7 @@
 /home/aman/Projects/hackgenda/platforms/android/assets/www/img/spinner.png \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/img/search_dark.svg \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/img/hamburger_bw.svg \
+/home/aman/Projects/hackgenda/platforms/android/assets/www/img/close.png \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/img/dark-sprites2x.png \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/img/dark-combo-box-bg.png \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/img/checkmark_bw.svg \
@@ -161,6 +162,7 @@
 /home/aman/Projects/hackgenda/platforms/android/assets/www/img/checkbox_checked.png \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/img/bg_dark.png \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/img/checkbox_checked_dark.png \
+/home/aman/Projects/hackgenda/platforms/android/assets/www/img/open.png \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/img/breadcrumb.png \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/img/hamburger_dark.svg \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/img/dark-grips.png \
