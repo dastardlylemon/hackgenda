@@ -31,13 +31,15 @@ var app = {
     }*/
 };
 
-function get_calendar() {
-    request_get("http://hackgenda.herokuapp.com/test/schedule.json", function (e) { console.log(e) });
-}
+global_state = {};
 
+<<<<<<< HEAD
 global_state = {
     "sidebar_open": false
 }
+=======
+var snapper;
+>>>>>>> save
 
 var chatRef = new Firebase('https://hackgenda.firebaseio.com');
 
@@ -58,23 +60,29 @@ function change_view(list_el) {
     snapper.close('left');
 }
 
+function addEvent(element, eventName, func) {
+    if (element.addEventListener) {
+        return element.addEventListener(eventName, func, false);
+    } else if (element.attachEvent) {
+        return element.attachEvent("on" + eventName, func);
+    }
+};
+
 function initSlidebar() {
-    var snapper = new Snap({
+    snapper = new Snap({
         element: document.getElementById('content'),
         disable: 'right'
     });
-
     addEvent(document.getElementById('open-left'), 'click', function(){
-        if (global_state.sidebar_open) {
+        if (document.body.className === "snapjs-left") {
             snapper.close('left');
-            global_state.sidebar_open = false;
         } else {
             snapper.open('left');
-            global_state.sidebar_open = true;
         }
-    });
+     });
 }
 
+<<<<<<< HEAD
 function addEvent(element, eventName, func) {
     if (element.addEventListener) {
         return element.addEventListener(eventName, func, false);
@@ -102,6 +110,8 @@ function initSlidebar() {
              });
 }
 
+=======
+>>>>>>> save
 function request_get(url, callback) {
     var httpRequest;
     if (window.XMLHttpRequest) { // Mozilla, Safari, ...
@@ -165,6 +175,7 @@ function didSelectSchedule() {
                                  });
     });
         snapper.close();
+<<<<<<< HEAD
 }
 
 function doStuff() {
@@ -176,4 +187,6 @@ function doStuff() {
 function saveStuff() {
     global_state["zomg"] = "abc";
     save_state();
+=======
+>>>>>>> save
 }

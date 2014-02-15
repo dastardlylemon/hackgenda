@@ -31,15 +31,9 @@ var app = {
     }*/
 };
 
-function get_calendar() {
-    request_get("http://hackgenda.herokuapp.com/test/schedule.json", function (e) { console.log(e) });
-}
+global_state = {};
 
-global_state = {
-    "sidebar_open": false,
-    "update": [],
-    "schedule": []
-}
+var snapper;
 
 var chatRef = new Firebase('https://hackgenda.firebaseio.com');
 
@@ -60,21 +54,26 @@ function change_view(list_el) {
     snapper.close('left');
 }
 
+function addEvent(element, eventName, func) {
+    if (element.addEventListener) {
+        return element.addEventListener(eventName, func, false);
+    } else if (element.attachEvent) {
+        return element.attachEvent("on" + eventName, func);
+    }
+};
+
 function initSlidebar() {
-    var snapper = new Snap({
+    snapper = new Snap({
         element: document.getElementById('content'),
         disable: 'right'
     });
-
     addEvent(document.getElementById('open-left'), 'click', function(){
-        if (global_state.sidebar_open) {
+        if (document.body.className === "snapjs-left") {
             snapper.close('left');
-            global_state.sidebar_open = false;
         } else {
             snapper.open('left');
-            global_state.sidebar_open = true;
         }
-    });
+     });
 }
 
 function addEvent(element, eventName, func) {

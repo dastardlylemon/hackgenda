@@ -1,5 +1,9 @@
 #Last build type
+<<<<<<< HEAD
 #Sat, 15 Feb 2014 15:11:45 -0500
+=======
+#Sat, 15 Feb 2014 17:41:25 -0500
+>>>>>>> save
 
 build.last.target=debug
 
