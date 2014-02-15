@@ -58,3 +58,14 @@ function twLogin() {
                rememberMe: true
                });
 }
+
+function goToSlidebarPage() {
+    var newDiv = document.createElement("div");
+    var html = " <div class='snap-drawers'> <div class='snap-drawer snap-drawer-left'>LEFT</div> <div id='content' class='snap-content'>MAIN</div> </div> ";
+    newDiv.innerHTML = html;
+    var oldDiv = document.getElementById("main_page");
+    oldDiv.parentNode.replaceChild(newDiv, oldDiv);
+    var snapper = new Snap({
+        element: document.getElementById('content')
+    });
+}

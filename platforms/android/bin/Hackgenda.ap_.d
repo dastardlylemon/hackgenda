@@ -27,6 +27,7 @@
 /home/aman/Projects/hackgenda/platforms/android/assets/www/icon.png \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/cordova.js \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/js/index.js \
+/home/aman/Projects/hackgenda/platforms/android/assets/www/js/snap.min.js \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/res/screen \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/res/icon \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/res/screen/webos \
@@ -140,6 +141,7 @@
 /home/aman/Projects/hackgenda/platforms/android/assets/www/img/checkbox_unchecked_dark.png \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/img/search-bg2x.png \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/img/spinner2x.png \
+/home/aman/Projects/hackgenda/platforms/android/assets/www/css/snap.css \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/css/index.css \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/css/topcoat-mobile-light.min.css \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/spec/index.js \
