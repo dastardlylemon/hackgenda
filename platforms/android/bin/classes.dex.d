@@ -6,4 +6,17 @@
 /home/aman/Projects/hackgenda/platforms/android/bin/classes/com/phonegap/hackgenda/R$xml.class \
 /home/aman/Projects/hackgenda/platforms/android/bin/classes/com/phonegap/hackgenda/R.class \
 /home/aman/Projects/hackgenda/platforms/android/bin/classes/com/phonegap/hackgenda/R$attr.class \
+/home/aman/Projects/hackgenda/platforms/android/bin/classes/org/apache/cordova/inappbrowser/InAppBrowser$InAppBrowserClient.class \
+/home/aman/Projects/hackgenda/platforms/android/bin/classes/org/apache/cordova/inappbrowser/InAppBrowser$1.class \
+/home/aman/Projects/hackgenda/platforms/android/bin/classes/org/apache/cordova/inappbrowser/InAppBrowser$5$1.class \
+/home/aman/Projects/hackgenda/platforms/android/bin/classes/org/apache/cordova/inappbrowser/InAppChromeClient.class \
+/home/aman/Projects/hackgenda/platforms/android/bin/classes/org/apache/cordova/inappbrowser/InAppBrowser$5$4.class \
+/home/aman/Projects/hackgenda/platforms/android/bin/classes/org/apache/cordova/inappbrowser/InAppBrowser$5$2.class \
+/home/aman/Projects/hackgenda/platforms/android/bin/classes/org/apache/cordova/inappbrowser/InAppBrowser$5.class \
+/home/aman/Projects/hackgenda/platforms/android/bin/classes/org/apache/cordova/inappbrowser/InAppBrowser$3.class \
+/home/aman/Projects/hackgenda/platforms/android/bin/classes/org/apache/cordova/inappbrowser/InAppBrowser$5$3.class \
+/home/aman/Projects/hackgenda/platforms/android/bin/classes/org/apache/cordova/inappbrowser/InAppBrowser$2.class \
+/home/aman/Projects/hackgenda/platforms/android/bin/classes/org/apache/cordova/inappbrowser/InAppBrowser$4.class \
+/home/aman/Projects/hackgenda/platforms/android/bin/classes/org/apache/cordova/inappbrowser/InAppBrowser$5$5.class \
+/home/aman/Projects/hackgenda/platforms/android/bin/classes/org/apache/cordova/inappbrowser/InAppBrowser.class \
 /home/aman/Projects/hackgenda/platforms/android/bin/dexedLibs/classes-c584d601ee8a9dbf219883808b44ec37.jar \

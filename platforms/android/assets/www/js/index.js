@@ -15,9 +15,8 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        if (parseFloat(window.device.version) === 7.0) {
-            document.body.style.marginTop = "20px";
-        }
+        var ref = window.open('http://apache.org', '_blank', 'location=yes');
+        ref.addEventListener('loadstart', function() { alert(event.url); });
         //app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
@@ -68,4 +67,28 @@ function goToSlidebarPage() {
     var snapper = new Snap({
         element: document.getElementById('content')
     });
+}
+
+function newPage(html) {
+    document.open();
+    document.write(html);
+    document.close();
+}
+
+function request_get(url, callback) {
+    var httpRequest;
+    if (window.XMLHttpRequest) { // Mozilla, Safari, ...
+        httpRequest = new XMLHttpRequest();
+    } else if (window.ActiveXObject) { // IE 8 and older
+        httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    httpRequest.onreadystatechange = function () {
+        if (httpRequest.readyState === 4) {
+            if (httpRequest.status === 200) {
+                callback.apply(this, Array.prototype.slice.call(arguments));
+            }
+        }
+    };
+    httpRequest.open('GET', url, true);
+    httpRequest.send(null);
 }
