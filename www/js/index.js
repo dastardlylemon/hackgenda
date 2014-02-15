@@ -57,3 +57,38 @@ function twLogin() {
                rememberMe: true
                });
 }
+
+function goToSlidebarPage() {
+    var newDiv = document.createElement("div");
+    var html = " <div class='snap-drawers'> <div class='snap-drawer snap-drawer-left'>LEFT</div> <div id='content' class='snap-content'>MAIN</div> </div> ";
+    newDiv.innerHTML = html;
+    var oldDiv = document.getElementById("main_page");
+    oldDiv.parentNode.replaceChild(newDiv, oldDiv);
+    var snapper = new Snap({
+        element: document.getElementById('content')
+    });
+}
+
+function newPage(html) {
+    document.open();
+    document.write(html);
+    document.close();
+}
+
+function request_get(url, callback) {
+    var httpRequest;
+    if (window.XMLHttpRequest) { // Mozilla, Safari, ...
+        httpRequest = new XMLHttpRequest();
+    } else if (window.ActiveXObject) { // IE 8 and older
+        httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    httpRequest.onreadystatechange = function () {
+        if (httpRequest.readyState === 4) {
+            if (httpRequest.status === 200) {
+                callback.apply(this, Array.prototype.slice.call(arguments));
+            }
+        }
+    };
+    httpRequest.open('GET', url, true);
+    httpRequest.send(null);
+}
