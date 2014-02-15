@@ -1,3 +1,4 @@
+sidebar_open = false;
 var app = {
     // Application Constructor
     initialize: function() {
@@ -15,6 +16,7 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+        initSlidebar();
         //var ref = window.open('http://apache.org', '_blank', 'location=yes');
         //ref.addEventListener('loadstart', function() { alert(event.url); });
         //app.receivedEvent('deviceready');
@@ -33,17 +35,6 @@ var app = {
 };
 
 var chatRef = new Firebase('https://hackgenda.firebaseio.com');
-var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
-                                   if (error) {
-                                   // an error occurred while attempting login
-                                   console.log(error);
-                                   } else if (user) {
-                                   // user authenticated with Firebase
-                                   console.log('User ID: ' + user.id + ', Provider: ' + user.provider);
-                                   } else {
-                                   // user is logged out
-                                   }
-                                   });
 
 function fbLogin() {
     auth.login('facebook', {
@@ -58,9 +49,32 @@ function twLogin() {
                });
 }
 
-function goToSlidebarPage() {
-    replace_body("main.body");
+function initSlidebar() {
+    var snapper = new Snap({
+        element: document.getElementById('content'),
+        disable: 'right'
+    });
+
+    addEvent(document.getElementById('open-left'), 'click', function(){
+        if (sidebar_open) {
+            snapper.close('left');
+            sidebar_open = false;
+            document.getElementById("open-left").style.backgroundImage = "url('img/open.png')";
+        } else {
+            snapper.open('left');
+            sidebar_open = true;
+            document.getElementById("open-left").style.backgroundImage = "url('img/close.png')";
+        }
+    });
 }
+
+function addEvent(element, eventName, func) {
+    if (element.addEventListener) {
+        return element.addEventListener(eventName, func, false);
+    } else if (element.attachEvent) {
+        return element.attachEvent("on" + eventName, func);
+    }
+};
 
 
 function request_get(url, callback) {

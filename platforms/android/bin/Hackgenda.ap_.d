@@ -40,8 +40,8 @@
 /home/aman/Projects/hackgenda/platforms/android/assets/www/phonegap.js \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/res \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/font \
-/home/aman/Projects/hackgenda/platforms/android/assets/www/test.body \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/plugins \
+/home/aman/Projects/hackgenda/platforms/android/assets/www/main.body \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/img \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/index.html \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/cordova_plugins.js \
