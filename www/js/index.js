@@ -49,6 +49,10 @@ function twLogin() {
                });
 }
 
+function change_view(list_el) {
+    snapper.close('left');
+}
+
 function initSlidebar() {
     var snapper = new Snap({
         element: document.getElementById('content'),
