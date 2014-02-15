@@ -51,16 +51,19 @@ function twLogin() {
 
 function initSlidebar() {
     var snapper = new Snap({
-        element: document.getElementById('content')
+        element: document.getElementById('content'),
+        disable: 'right'
     });
 
     addEvent(document.getElementById('open-left'), 'click', function(){
         if (sidebar_open) {
             snapper.close('left');
             sidebar_open = false;
+            document.getElementById("open-left").style.backgroundImage = "url('img/open.png')";
         } else {
             snapper.open('left');
             sidebar_open = true;
+            document.getElementById("open-left").style.backgroundImage = "url('img/close.png')";
         }
     });
 }
