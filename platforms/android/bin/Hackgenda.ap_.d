@@ -40,8 +40,8 @@
 /home/aman/Projects/hackgenda/platforms/android/assets/www/phonegap.js \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/res \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/font \
+/home/aman/Projects/hackgenda/platforms/android/assets/www/test.body \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/plugins \
-/home/aman/Projects/hackgenda/platforms/android/assets/www/main.body \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/img \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/index.html \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/cordova_plugins.js \
@@ -53,6 +53,7 @@
 /home/aman/Projects/hackgenda/platforms/android/assets/www/icon.png \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/cordova.js \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/js/index.js \
+/home/aman/Projects/hackgenda/platforms/android/assets/www/js/iscroll.js \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/js/app.js \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/js/snap.min.js \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/res/screen \
@@ -135,7 +136,11 @@
 /home/aman/Projects/hackgenda/platforms/android/assets/www/font/SourceCodePro-ExtraLight.otf \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/font/SourceSansPro-LightIt.otf \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/font/SourceSansPro-Semibold.otf \
+/home/aman/Projects/hackgenda/platforms/android/assets/www/plugins/org.apache.cordova.console \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/plugins/org.apache.cordova.inappbrowser \
+/home/aman/Projects/hackgenda/platforms/android/assets/www/plugins/org.apache.cordova.console/www \
+/home/aman/Projects/hackgenda/platforms/android/assets/www/plugins/org.apache.cordova.console/www/logger.js \
+/home/aman/Projects/hackgenda/platforms/android/assets/www/plugins/org.apache.cordova.console/www/console-via-logger.js \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/plugins/org.apache.cordova.inappbrowser/www \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/plugins/org.apache.cordova.inappbrowser/www/InAppBrowser.js \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/img/drop-down-triangle-dark.png \
@@ -153,7 +158,6 @@
 /home/aman/Projects/hackgenda/platforms/android/assets/www/img/spinner.png \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/img/search_dark.svg \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/img/hamburger_bw.svg \
-/home/aman/Projects/hackgenda/platforms/android/assets/www/img/close.png \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/img/dark-sprites2x.png \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/img/dark-combo-box-bg.png \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/img/checkmark_bw.svg \
@@ -162,7 +166,6 @@
 /home/aman/Projects/hackgenda/platforms/android/assets/www/img/checkbox_checked.png \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/img/bg_dark.png \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/img/checkbox_checked_dark.png \
-/home/aman/Projects/hackgenda/platforms/android/assets/www/img/open.png \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/img/breadcrumb.png \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/img/hamburger_dark.svg \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/img/dark-grips.png \
