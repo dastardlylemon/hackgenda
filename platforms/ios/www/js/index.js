@@ -9,11 +9,6 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
-        document.addEventListener('click', function(e) {
-                                  if (e.srcElement.target === "_blank" && e.srcElement.href.indexOf("#phonegap=external") === -1) {
-                                  e.srcElement.href = e.srcElement.href + "#phonegap=external";
-                                  }
-                                  }, true);
     },
     // deviceready Event Handler
     //
@@ -44,8 +39,10 @@ function addEvent(element, eventName, func) {
     }
 };
 
+var snapper;
+
 function initSlidebar() {
-    var snapper = new Snap({
+    snapper = new Snap({
                            element: document.getElementById('content'),
                            disable: 'right'
                            });
@@ -123,4 +120,5 @@ function didSelectSchedule() {
                                  list.appendChild(v);
                                  });
     });
+        snapper.close();
 }
