@@ -122,33 +122,43 @@ h1 {
     background: #B8C4C4;
 }
 
-#toolbar {
-    background: #536ea7;
-    border-bottom: 1px solid #111b32;
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    width: auto;
-    height: 44px;
+#spacer {
+    height: 70px;
+    width: 100%;
 }
 
-#toolbar h1 {
-    font-size: 26px;
-    line-height: 22px;
-    text-align: center;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.8);
+#wrapper {
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
     position: absolute;
-    top: 10px;
-    right: 44px;
-    left: 44px;
-    width: auto;
-    height: 44px;
+}
+
+.topcoat-list {
+    position: absolute;
+    width: 100%;
+}
+
+.topcoat-navigation-bar {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 5;
+}
+
+.snap-drawer-left {
+    background-color: #545454;
+}
+
+.snap-drawer-left .topcoat-list__item {
+    color: #fff;
+    border-top: 0px solid #fff;
 }
 
 #open-left {
-    background: url(../img/open.png) center center no-repeat;
-    display: block;
-    width: 44px;
-    height: 44px;
+    font-size: 40px;
+    float: left;
+    position: absolute;
+    top: 5px;
+    left: 10px;
 }
