@@ -15,9 +15,8 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        if (parseFloat(window.device.version) === 7.0) {
-            document.body.style.marginTop = "20px";
-        }
+        var ref = window.open('http://apache.org', '_blank', 'location=yes');
+        ref.addEventListener('loadstart', function() { alert(event.url); });
         //app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
