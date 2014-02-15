@@ -33,13 +33,7 @@ var app = {
 
 global_state = {};
 
-<<<<<<< HEAD
-global_state = {
-    "sidebar_open": false
-}
-=======
 var snapper;
->>>>>>> save
 
 var chatRef = new Firebase('https://hackgenda.firebaseio.com');
 
@@ -82,7 +76,6 @@ function initSlidebar() {
      });
 }
 
-<<<<<<< HEAD
 function addEvent(element, eventName, func) {
     if (element.addEventListener) {
         return element.addEventListener(eventName, func, false);
@@ -110,8 +103,6 @@ function initSlidebar() {
              });
 }
 
-=======
->>>>>>> save
 function request_get(url, callback) {
     var httpRequest;
     if (window.XMLHttpRequest) { // Mozilla, Safari, ...
@@ -175,18 +166,4 @@ function didSelectSchedule() {
                                  });
     });
         snapper.close();
-<<<<<<< HEAD
-}
-
-function doStuff() {
-    get_state();
-    var h = document.getElementById('headerbro');
-    h.innerHTML = global_state["zomg"];
-}
-
-function saveStuff() {
-    global_state["zomg"] = "abc";
-    save_state();
-=======
->>>>>>> save
 }
