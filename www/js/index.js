@@ -16,6 +16,7 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         initSlidebar();
+        didSelectSchedule();
     },
     // Update DOM on a Received Event
     /*receivedEvent: function(id) {
@@ -30,11 +31,9 @@ var app = {
     }*/
 };
 
-global_state = {
-    "sidebar_open": false,
-    "update": [],
-    "schedule": []
-}
+global_state = {};
+
+var snapper;
 
 var chatRef = new Firebase('https://hackgenda.firebaseio.com');
 
@@ -64,20 +63,17 @@ function addEvent(element, eventName, func) {
 };
 
 function initSlidebar() {
-    var snapper = new Snap({
-                           element: document.getElementById('content'),
-                           disable: 'right'
-                           });
-    
+    snapper = new Snap({
+        element: document.getElementById('content'),
+        disable: 'right'
+    });
     addEvent(document.getElementById('open-left'), 'click', function(){
-             if (sidebar_open) {
-             snapper.close('left');
-             sidebar_open = false;
-             } else {
-             snapper.open('left');
-             sidebar_open = true;
-             }
-             });
+        if (document.body.className === "snapjs-left") {
+            snapper.close('left');
+        } else {
+            snapper.open('left');
+        }
+     });
 }
 
 function request_get(url, callback) {
@@ -104,4 +100,43 @@ function replace_body(url) {
                 var body = document.body;
                 body.innerHTML = data;
                 });
+}
+
+function didSelectSchedule() {
+    var elements = new Array();
+    request_get("http://hackgenda.herokuapp.com/test/schedule.json", function(response) {
+         json = JSON.parse(response.target.response);
+                json.forEach(function(v, i) {
+                             var dayHead = document.createElement('h3');
+                             dayHead.setAttribute('class', 'topcoat-list__header');
+                             dayHead.innerHTML = v.day;
+                             elements.push(dayHead);
+                             var dayCells = document.createElement('ul');
+                             dayCells.setAttribute('class', 'topcoat-list__container');
+                             v.events.forEach(function(vv, ii) {
+                                                 var dayCell = document.createElement('li');
+                                                 dayCell.setAttribute('class', 'topcoat-list__item');
+                                                 var dayTitle = document.createElement('h2');
+                                                 dayTitle.innerHTML = vv.name;
+                                              var dayDesc = document.createElement('span');
+                                              dayDesc.innerHTML = vv.description + " | " + vv.time;
+                                              dayCell.appendChild(dayTitle);
+                                              dayCell.appendChild(dayDesc);
+                                              if (vv.URL) {
+                                              dayCell.addEventListener('click', function() {
+                                                                       var url = encodeURI(vv.URL);
+                                                                       window.open(url, "_blank");
+                                                                       });
+                                              }
+                                                 dayCells.appendChild(dayCell);
+                                                 });
+                             elements.push(dayCells);
+                });
+                var list = document.getElementById('scroller');
+                list.innerHTML = "";
+                elements.forEach(function(v, i) {
+                                 list.appendChild(v);
+                                 });
+    });
+        snapper.close();
 }
