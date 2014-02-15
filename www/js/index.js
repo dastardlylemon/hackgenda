@@ -1,4 +1,3 @@
-sidebar_open = false;
 var app = {
     // Application Constructor
     initialize: function() {
@@ -34,19 +33,29 @@ var app = {
     }*/
 };
 
-var chatRef = new Firebase('https://hackgenda.firebaseio.com');
-
-function fbLogin() {
-    auth.login('facebook', {
-               rememberMe: true,
-               scope: 'email'
-               });
+function get_calendar() {
+    request_get("http://hackgenda.herokuapp.com/test/schedule.json", function (e) { console.log(e) });
 }
 
-function twLogin() {
-    auth.login('twitter', {
-               rememberMe: true
-               });
+global_state = {
+    "sidebar_open": false,
+    "update": [],
+    "schedule": []
+}
+
+var chatRef = new Firebase('https://hackgenda.firebaseio.com');
+
+
+function save_state() {
+    for (var key in global_state) {
+        localStorage[key] = JSON.stringify(global_state[key]);
+    }
+}
+
+function get_state() {
+    for (var key in localStorage) {
+        global_state[key] = JSON.parse(localStorage[key]);
+    }
 }
 
 function change_view(list_el) {
@@ -60,14 +69,12 @@ function initSlidebar() {
     });
 
     addEvent(document.getElementById('open-left'), 'click', function(){
-        if (sidebar_open) {
+        if (global_state.sidebar_open) {
             snapper.close('left');
-            sidebar_open = false;
-            document.getElementById("open-left").style.backgroundImage = "url('img/open.png')";
+            global_state.sidebar_open = false;
         } else {
             snapper.open('left');
-            sidebar_open = true;
-            document.getElementById("open-left").style.backgroundImage = "url('img/close.png')";
+            global_state.sidebar_open = true;
         }
     });
 }
