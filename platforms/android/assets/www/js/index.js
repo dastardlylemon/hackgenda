@@ -84,25 +84,6 @@ function addEvent(element, eventName, func) {
     }
 };
 
-var snapper;
-
-function initSlidebar() {
-    snapper = new Snap({
-                           element: document.getElementById('content'),
-                           disable: 'right'
-                           });
-    
-    addEvent(document.getElementById('open-left'), 'click', function(){
-             if (sidebar_open) {
-             snapper.close('left');
-             sidebar_open = false;
-             } else {
-             snapper.open('left');
-             sidebar_open = true;
-             }
-             });
-}
-
 function request_get(url, callback) {
     var httpRequest;
     if (window.XMLHttpRequest) { // Mozilla, Safari, ...
