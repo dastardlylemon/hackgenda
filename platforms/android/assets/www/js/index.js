@@ -1,3 +1,4 @@
+sidebar_open = false;
 var app = {
     // Application Constructor
     initialize: function() {
@@ -15,8 +16,9 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        var ref = window.open('http://apache.org', '_blank', 'location=yes');
-        ref.addEventListener('loadstart', function() { alert(event.url); });
+        initSlidebar();
+        //var ref = window.open('http://apache.org', '_blank', 'location=yes');
+        //ref.addEventListener('loadstart', function() { alert(event.url); });
         //app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
@@ -33,17 +35,6 @@ var app = {
 };
 
 var chatRef = new Firebase('https://hackgenda.firebaseio.com');
-var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
-                                   if (error) {
-                                   // an error occurred while attempting login
-                                   console.log(error);
-                                   } else if (user) {
-                                   // user authenticated with Firebase
-                                   console.log('User ID: ' + user.id + ', Provider: ' + user.provider);
-                                   } else {
-                                   // user is logged out
-                                   }
-                                   });
 
 function fbLogin() {
     auth.login('facebook', {
@@ -58,22 +49,30 @@ function twLogin() {
                });
 }
 
-function goToSlidebarPage() {
-    var newDiv = document.createElement("div");
-    var html = " <div class='snap-drawers'> <div class='snap-drawer snap-drawer-left'>LEFT</div> <div id='content' class='snap-content'>MAIN</div> </div> ";
-    newDiv.innerHTML = html;
-    var oldDiv = document.getElementById("main_page");
-    oldDiv.parentNode.replaceChild(newDiv, oldDiv);
+function initSlidebar() {
     var snapper = new Snap({
         element: document.getElementById('content')
     });
+
+    addEvent(document.getElementById('open-left'), 'click', function(){
+        if (sidebar_open) {
+            snapper.close('left');
+            sidebar_open = false;
+        } else {
+            snapper.open('left');
+            sidebar_open = true;
+        }
+    });
 }
 
-function newPage(html) {
-    document.open();
-    document.write(html);
-    document.close();
-}
+function addEvent(element, eventName, func) {
+    if (element.addEventListener) {
+        return element.addEventListener(eventName, func, false);
+    } else if (element.attachEvent) {
+        return element.attachEvent("on" + eventName, func);
+    }
+};
+
 
 function request_get(url, callback) {
     var httpRequest;
@@ -91,4 +90,12 @@ function request_get(url, callback) {
     };
     httpRequest.open('GET', url, true);
     httpRequest.send(null);
+}
+
+function replace_body(url) {
+    request_get(url, function (e) {
+        var data = e.target.responseText;
+        var body = document.body;
+        body.innerHTML = data;
+    });
 }

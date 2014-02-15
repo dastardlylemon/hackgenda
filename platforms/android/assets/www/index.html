@@ -8,26 +8,25 @@
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <link rel="stylesheet" type="text/css" href="css/topcoat-mobile-light.min.css">
         <link rel="stylesheet" type="text/css" href="css/snap.css">
-        <title>HACKGENDA</title>
-    </head>
-    <body>
-        <div class="app">
-        <h1>HACKATHON</h1>
-        <div class="app" id="main_page">
-            <button class="topcoat-button--cta" id="fb-button" onclick="fbLogin()">Login With Facebook</button><br/><br/>
-            <button class="topcoat-button--cta" id="tw-button" onclick="twLogin()">Login With Twitter</button>
-            <button class="topcoat-button--cta" id="bypass" onclick="goToSlidebarPage()">Goto Slidebar Page</button>
-        </div>
         <script type='text/javascript' src="https://cdn.firebase.com/js/client/1.0.6/firebase.js"></script>
-        <script type='text/javascript' src="js/snap.min.js"></script>
-        <script type='text/javascript'
-            src="https://cdn.firebase.com/js/simple-login/1.2.5/firebase-simple-login.js">
-            </script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="phonegap.js"></script>
+        <script type='text/javascript' src="js/snap.min.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             app.initialize();
         </script>
+        <title>HACKGENDA</title>
+    </head>
+    <body>
+        <div class='snap-drawers'>
+            <div class='snap-drawer snap-drawer-left'>LEFT</div>
+            <div id='content' class='snap-content'>
+                <div id="toolbar">
+                    <a id="open-left">===</a>
+                    <h1>HACKATHON</h1>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
