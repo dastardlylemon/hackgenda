@@ -113,3 +113,34 @@ h1 {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
 }
+
+.snap-content {
+    background: #dfe2e2;
+}
+
+.snap-drawer {
+    background: #B8C4C4;
+}
+
+#spacer {
+    height: 70px;
+    width: 100%;
+}
+
+#wrapper {
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    position: absolute;
+}
+
+.topcoat-list {
+    position: absolute;
+    width: 100%;
+}
+
+.topcoat-navigation-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+}
