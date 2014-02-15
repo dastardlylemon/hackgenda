@@ -36,9 +36,7 @@ function get_calendar() {
 }
 
 global_state = {
-    "sidebar_open": false,
-    "update": [],
-    "schedule": []
+    "sidebar_open": false
 }
 
 var chatRef = new Firebase('https://hackgenda.firebaseio.com');
@@ -167,4 +165,15 @@ function didSelectSchedule() {
                                  });
     });
         snapper.close();
+}
+
+function doStuff() {
+    get_state();
+    var h = document.getElementById('headerbro');
+    h.innerHTML = global_state["zomg"];
+}
+
+function saveStuff() {
+    global_state["zomg"] = "abc";
+    save_state();
 }
