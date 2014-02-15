@@ -122,11 +122,6 @@ h1 {
     background: #B8C4C4;
 }
 
-#spacer {
-    height: 70px;
-    width: 100%;
-}
-
 #wrapper {
     -webkit-overflow-scrolling: touch;
     width: 100%;
@@ -139,11 +134,17 @@ h1 {
 }
 
 .topcoat-navigation-bar {
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 5;
+}
+
+.topcoat-list__item h2 {
+    margin-top: 0px;
+    font-size: 30px;
+    margin-bottom: 0px;
 }
 
 .snap-drawer-left {

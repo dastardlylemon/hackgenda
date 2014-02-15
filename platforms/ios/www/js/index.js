@@ -9,6 +9,11 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener('click', function(e) {
+                                  if (e.srcElement.target === "_blank" && e.srcElement.href.indexOf("#phonegap=external") === -1) {
+                                  e.srcElement.href = e.srcElement.href + "#phonegap=external";
+                                  }
+                                  }, true);
     },
     // deviceready Event Handler
     //
@@ -16,6 +21,7 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         initSlidebar();
+        didSelectSchedule();
     },
     // Update DOM on a Received Event
     /*receivedEvent: function(id) {
@@ -79,4 +85,42 @@ function replace_body(url) {
                 var body = document.body;
                 body.innerHTML = data;
                 });
+}
+
+function didSelectSchedule() {
+    var elements = new Array();
+    request_get("http://hackgenda.herokuapp.com/test/schedule.json", function(response) {
+         json = JSON.parse(response.target.response);
+                json.forEach(function(v, i) {
+                             var dayHead = document.createElement('h3');
+                             dayHead.setAttribute('class', 'topcoat-list__header');
+                             dayHead.innerHTML = v.day;
+                             elements.push(dayHead);
+                             var dayCells = document.createElement('ul');
+                             dayCells.setAttribute('class', 'topcoat-list__container');
+                             v.events.forEach(function(vv, ii) {
+                                                 var dayCell = document.createElement('li');
+                                                 dayCell.setAttribute('class', 'topcoat-list__item');
+                                                 var dayTitle = document.createElement('h2');
+                                                 dayTitle.innerHTML = vv.name;
+                                              var dayDesc = document.createElement('span');
+                                              dayDesc.innerHTML = vv.description + " | " + vv.time;
+                                              dayCell.appendChild(dayTitle);
+                                              dayCell.appendChild(dayDesc);
+                                              if (vv.URL) {
+                                              dayCell.addEventListener('click', function() {
+                                                                       var url = encodeURI(vv.URL);
+                                                                       window.open(url, "_blank");
+                                                                       });
+                                              }
+                                                 dayCells.appendChild(dayCell);
+                                                 });
+                             elements.push(dayCells);
+                });
+                var list = document.getElementById('scroller');
+                list.innerHTML = "";
+                elements.forEach(function(v, i) {
+                                 list.appendChild(v);
+                                 });
+    });
 }
