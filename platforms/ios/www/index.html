@@ -4,10 +4,10 @@
     <head>
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=medium-dpi, user-scalable=0" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-            <link rel="stylesheet" type="text/css" href="css/index.css" />
             <link rel="stylesheet" type="text/css" href="css/topcoat-mobile-light.min.css">
+            <link rel="stylesheet" type="text/css" href="css/index.css" />
                 <link rel="stylesheet" type="text/css" href="css/snap.css">
                     <title>HACKGENDA</title>
                     </head>
@@ -15,9 +15,10 @@
         <div class='snap-drawers'>
             <div class='snap-drawer snap-drawer-left'>
                 <ul class="topcoat-list__container">
-                    <li class="topcoat-list__item" id="item-updates" onclick="updateUpdatesView()">Updates</li>
+                    <li class="topcoat-list__item" id="item-updates"><h1>HACKGENDA</h1></li>
+                    <li class="topcoat-list__item" id="item-updates" onclick="updateUpdatesView()">Announcements</li>
                     <li class="topcoat-list__item" id="item-schedule" onclick="didSelectSchedule()">Schedule</li>
-                    <li class="topcoat-list__item" id="item-awards">Sponsor Awards</li>
+                    <li class="topcoat-list__item" id="item-awards" onclick="didSelectSponsors()">Sponsors</li>
                     <li class="topcoat-list__item" id="item-chat">Sponsor Chat</li>
                 </ul>
             </div>
@@ -25,7 +26,7 @@
                 <div class="topcoat-navigation-bar">
                     <a id="open-left">&equiv;</a>
                     <div class="topcoat-navigation-bar__item center full">
-                        <h1 class="topcoat-navigation-bar__title">HACKGENDA DEMO</h1>
+                        <h1 class="topcoat-navigation-bar__title" id="navbar">WELCOME</h1>
                     </div>
                 </div>
                 <div id="debug"></div>
@@ -41,6 +42,7 @@
         <script type="text/javascript" src="js/spin.min.js"></script>
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="js/iscroll.js"></script>
+        <script type="text/javascript" src="js/PushNotification.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             var myScroll;

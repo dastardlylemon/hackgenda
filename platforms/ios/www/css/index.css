@@ -69,6 +69,10 @@ body {
     }
 }
 
+body {
+    background-color: #e3e3e3;
+}
+
 h1 {
     font-size:24px;
     font-weight:normal;
@@ -139,13 +143,23 @@ h1 {
     left: 0;
     width: 100%;
     z-index: 5;
+    background: #7c12d6;
+    color: #e3e3e3;
+}
+
+.topcoat-navigation-bar__title {
+    color: #e3e3e3;
+}
+
+.topcoat-button--cta {
+    background-color: #7c12d6;
 }
 
 .topcoat-list__item h2 {
     margin-top: 0px;
     font-size: 30px;
     margin-bottom: 0px;
-}
+}   
 
 .snap-drawer-left {
     background-color: #545454;
