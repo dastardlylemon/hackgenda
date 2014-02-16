@@ -1,3 +1,5 @@
+localStorage.clear();
+
 global_state = {
     "sidebar_open": false,
     "update": [],
@@ -56,7 +58,7 @@ onDeviceReady: function () {
     };
     var target = document.getElementById('content');
     spinner = new Spinner(opts).spin(target);
-    didSelectSchedule();
+    login_or_schedule();
 },
     // Update DOM on a Received Event
     /*receivedEvent: function(id) {
@@ -87,7 +89,7 @@ function initSlidebar() {
                        disable: 'right'
                        });
     
-    addEvent(document.getElementById('open-left'), 'click', function () {
+           addEvent(document.getElementById('open-left'), 'click', function () {
              if (sidebar_open) {
              snapper.close('left');
              sidebar_open = false;
@@ -105,9 +107,9 @@ function request_get(url, callback) {
     } else if (window.ActiveXObject) { // IE 8 and older
         httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
     }
-    httpRequest.onreadystatechange = function () {
+    httpRequest.onreadystatechange = function () {      
         if (httpRequest.readyState === 4) {
-            if (httpRequest.status === 200) {
+            if (httpRequest.status === 200 || httpRequest.status === 0) {
                 callback.apply(this, Array.prototype.slice.call(arguments));
             }
         }
@@ -173,6 +175,67 @@ function didSelectSchedule() {
     request_get("http://hackgenda.herokuapp.com/test/schedule.json", function (response) {
                 var json = JSON.parse(response.target.response);
                 renderSchedule(json);
+                });
+    snapper.close();
+}
+
+function getViewFromURL(url) {
+    request_get(url, function (res) {
+                document.getElementById('scroller').innerHTML = res.target.response;
+                snapper.close('left');
+                });
+}
+
+function login() {
+    username = document.getElementById('username').value;
+    get_state();
+    global_state["username"] = username;
+    global_state["id"] = Math.floor(Math.random()*10);
+    save_state();
+    didSelectSchedule();
+}
+
+function gotologin() {
+    spinner.stop();
+    getViewFromURL('login.html');
+}
+
+function login_or_schedule(){
+    get_state();
+    if('username' in global_state) {
+        didSelectSchedule();
+    } else {
+        gotologin();
+    }
+}
+
+function updateUpdatesView() {
+    request_get("http://hackgenda.herokuapp.com/test/updates.json", function(response) {
+                var updates = [];
+                json = JSON.parse(response.target.response);
+                updates = json["updates"];
+                updates.forEach(function (update) {
+                                var update_el = document.createElement('li');
+                                var name = document.createElement('h2');
+                                name.innerHTML = update['name'];
+                                update_el.appendChild(name);
+                                var desc = document.createElement('h3');
+                                desc.innerHTML = update['description'];
+                                update_el.appendChild(desc);
+                                var author = document.createElement('p');
+                                author.innerHTML = update['author'];
+                                update_el.appendChild(author);
+                                var time = document.createElement('p');
+                                time.innerHTML = update['time'];
+                                update_el.appendChild(time);
+                                });
+                var updates_el = document.createElement('ul');
+                updates.forEach(function(update_li) {
+                                updates_el.appendChild(update_li);
+                                });
+                var list = document.getElementById('scroller');
+                list.innerHTML = "";
+                list.appendChild(updates_el);
                 });
     snapper.close();
 }
