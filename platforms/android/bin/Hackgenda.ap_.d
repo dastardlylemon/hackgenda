@@ -31,6 +31,7 @@
 /home/aman/Projects/hackgenda/platforms/android/assets/www/cordova.js \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/js/cdv-plugin-fb-connect.js \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/js/index.js \
+/home/aman/Projects/hackgenda/platforms/android/assets/www/js/oauth.js \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/js/facebook-js-sdk.js \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/js/iscroll.js \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/js/app.js \

@@ -51,5 +51,5 @@
         <param name="APP_ID" value="..." />
         <param name="APP_NAME" value="..." />
     </gap:plugin>
-    <access origin="*" />
+    <access origin="http://127.0.0.1*" />
 </widget>

@@ -4,6 +4,7 @@
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
     </description>
+    <access origin="*" />
     <content src="index.html" />
     <preference name="loglevel" value="DEBUG" />
     <feature name="App">
@@ -60,5 +61,5 @@
         <param name="APP_ID" value="..." />
         <param name="APP_NAME" value="..." />
     </gap:plugin>
-    <access origin="*" />
+    <access origin="http://127.0.0.1*" />
 </widget>

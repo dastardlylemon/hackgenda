@@ -16,24 +16,7 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         initSlidebar();
-        didSelectSchedule();
-        window.fbAsyncInit = function() {
-            FB.init({
-                appId: '647655481960155',
-                nativeInterface: CDV.FB,
-                useCachedDialogs: false
-            });
-        };
-        (function (d){
-            var js;
-            var id = 'facebook-jssdk';
-            if (d.getElementById(id)) {return;}
-            js = d.createElement('script');
-            js.id = id;
-            js.async = true;
-            js.src = "//connect.facebook.net/en_US/all.js";
-            d.getElementsByTagName('head')[0].appendChild(js);
-        }(document));
+        login_or_schedule();
     },
     // Update DOM on a Received Event
     /*receivedEvent: function(id) {
@@ -163,7 +146,7 @@ function didSelectSchedule() {
 }
 
 function updateView(html, callback) {
-    content = document.getElementById('wrapper');
+    content = document.getElementById('scroller');
     content.innerHTML = html;
     snapper.close('left');
     callback.call(this, html);
@@ -172,11 +155,9 @@ function updateView(html, callback) {
 function getViewFromURL(url) {
     request_get(url, function (response) {
         html = response.target.response;
-        content = document.getElementById('wrapper');
+        content = document.getElementById('scroller');
         content.innerHTML = html;
         snapper.close('left');
-        fbbutton = document.getElementById('fblogin');
-        fbbutton.disabled = true;
     });
 }
 
@@ -192,4 +173,69 @@ function fblogin() {
             alert('not logged in');
         }
     }, {scope: "email"});
+}
+
+function sendRequest(url,callback,postData) {
+    var req = createXMLHTTPObject();
+    if (!req) return;
+    var method = (postData) ? "POST" : "GET";
+    req.open(method,url,true);
+    req.setRequestHeader('User-Agent','XMLHTTP/1.0');
+    if (postData) {
+        req.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+    }
+    req.onreadystatechange = function () {
+        if (req.readyState != 4) return;
+        if (req.status != 200 && req.status != 304) {
+            //alert('HTTP error ' + req.status);
+            return;
+        }
+        callback(req);
+    }
+    if (req.readyState == 4) return;
+    req.send(postData);
+}
+
+var XMLHttpFactories = [
+	function () {return new XMLHttpRequest()},
+	function () {return new ActiveXObject("Msxml2.XMLHTTP")},
+	function () {return new ActiveXObject("Msxml3.XMLHTTP")},
+	function () {return new ActiveXObject("Microsoft.XMLHTTP")}
+];
+
+function createXMLHTTPObject() {
+    var xmlhttp = false;
+    for (var i=0;i<XMLHttpFactories.length;i++) {
+        try {
+            xmlhttp = XMLHttpFactories[i]();
+        }
+        catch (e) {
+            continue;
+        }
+        break;
+    }
+    return xmlhttp;
+}
+
+function twlogin() {
+    sendRequest("https://api.twitter.com/oauth/request_token", function (e) { console.log(e); }, {
+        oauth_consumer_key : "IDFJkMbW1Ty3CzspMPcdTg",
+        oauth_callback: "./logged_in.html"});
+}
+
+function login() {
+    username = document.getElementById('username').value;
+    get_state();
+    global_state["username"] = username;
+    save_state();
+    didSelectSchedule();
+}
+
+function login_or_schedule(){
+    get_state();
+    if('username' in global_state) {
+        didSelectSchedule();
+    } else {
+        gotologin();
+    }
 }
