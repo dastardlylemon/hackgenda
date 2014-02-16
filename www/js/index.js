@@ -15,9 +15,47 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+        get_state();
+        if ('registered' in global_state) {
+            continue;
+        } else {
+            var pushNotification = window.plugins.pushNotification;
+            pushNotification.register(app.successHandler, app.errorHandler, {"senderID":"351988118019", "ecb": "app.onNotificationGCM"});
+        }
         initSlidebar();
         login_or_schedule();
+        alert('ayo');
     },
+    successHandler: function(result) {
+        return undefined;
+    },
+    errorHandler: function(error) {
+        return undefined;
+    },
+
+    onNotificationGCM: function(e) {
+        switch (e.event) {
+            case 'registered':
+                if (e.regid.length > 0) {
+                    alert("Regid " + e.regid);
+                    //sendRequest("http://hackgenda.herokuapp.com/mobile/android", function (response) { return undefined; }, {"id": e.regid});
+                    request_get("http://hackgenda.herokuapp.com/mobile/android/" + e.regid, function (response) { return undefined;});
+                    get_state();
+                    global_state['registered'] = true;
+                    save_state();
+                    alert('done');
+                }
+                break;
+            case 'message':
+                //YO DO SHIT HERE
+                //RELOAD UPDATES VIEW
+                break;
+            case 'error':
+                break;
+            default:
+                break;
+        }
+    }
     // Update DOM on a Received Event
     /*receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
@@ -216,7 +254,7 @@ function createXMLHTTPObject() {
 }
 
 function twlogin() {
-    sendRequest("https://api.twitter.com/oauth/request_token", function (e) { console.log(e); }, {
+    sendRequest("https://api.twitter.com/oauth/request_token", function (e) { alert(e); }, {
         oauth_consumer_key : "IDFJkMbW1Ty3CzspMPcdTg",
         oauth_callback: "./logged_in.html"});
 }
@@ -237,4 +275,35 @@ function login_or_schedule(){
     } else {
         gotologin();
     }
+}
+
+function updateUpdatesView() {
+    request_get("http://hackgenda.herokuapp.com/test/updates.json", function(response) {
+        var updates = [];
+        json = JSON.parse(response.target.response);
+        updates = json["updates"];
+        updates.forEach(function (update) {
+            var update_el = document.createElement('li');
+            var name = document.createElement('h2');
+            name.innerHTML = update['name'];
+            update_el.appendChild(name);
+            var desc = document.createElement('h3');
+            desc.innerHTML = update['description'];
+            update_el.appendChild(desc);
+            var author = document.createElement('p');
+            author.innerHTML = update['author'];
+            update_el.appendChild(author);
+            var time = document.createElement('p');
+            time.innerHTML = update['time'];
+            update_el.appendChild(time);
+        });
+        var updates_el = document.createElement('ul');
+        updates.forEach(function(update_li) {
+            updates_el.appendChild(update_li);
+        });
+        var list = document.getElementById('scroller');
+        list.innerHTML = "";
+        list.appendChild(updates_el);
+    });
+    snapper.close();
 }
