@@ -17,6 +17,23 @@ var app = {
     onDeviceReady: function() {
         initSlidebar();
         didSelectSchedule();
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId: '647655481960155',
+                nativeInterface: CDV.FB,
+                useCachedDialogs: false
+            });
+        };
+        (function (d){
+            var js;
+            var id = 'facebook-jssdk';
+            if (d.getElementById(id)) {return;}
+            js = d.createElement('script');
+            js.id = id;
+            js.async = true;
+            js.src = "//connect.facebook.net/en_US/all.js";
+            d.getElementsByTagName('head')[0].appendChild(js);
+        }(document));
     },
     // Update DOM on a Received Event
     /*receivedEvent: function(id) {
@@ -48,10 +65,6 @@ function get_state() {
     for (var key in localStorage) {
         global_state[key] = JSON.parse(localStorage[key]);
     }
-}
-
-function change_view(list_el) {
-    snapper.close('left');
 }
 
 function addEvent(element, eventName, func) {
@@ -112,7 +125,7 @@ function replace_body(url) {
 
 function didSelectSchedule() {
     var elements = new Array();
-    request_get("http://hackgenda.herokuapp.com/test/schedule.json", function(response) {
+    request_get("http://hackgenda.herokuapp.com/mobile/schedule", function(response) {
          json = JSON.parse(response.target.response);
                 json.forEach(function(v, i) {
                              var dayHead = document.createElement('h3');
@@ -147,4 +160,36 @@ function didSelectSchedule() {
                                  });
     });
         snapper.close();
+}
+
+function updateView(html, callback) {
+    content = document.getElementById('wrapper');
+    content.innerHTML = html;
+    snapper.close('left');
+    callback.call(this, html);
+}
+
+function getViewFromURL(url) {
+    request_get(url, function (response) {
+        html = response.target.response;
+        content = document.getElementById('wrapper');
+        content.innerHTML = html;
+        snapper.close('left');
+        fbbutton = document.getElementById('fblogin');
+        fbbutton.disabled = true;
+    });
+}
+
+function gotologin() {
+    getViewFromURL('login.html');
+}
+
+function fblogin() {
+    FB.login(function(response) {
+        if (response.session) {
+            alert('logged in');
+        } else {
+            alert('not logged in');
+        }
+    }, {scope: "email"});
 }

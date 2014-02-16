@@ -24,11 +24,14 @@
 /home/aman/Projects/hackgenda/platforms/android/assets/www/spec.html \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/config.xml \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/css \
+/home/aman/Projects/hackgenda/platforms/android/assets/www/login.html \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/app.html \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/spec \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/icon.png \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/cordova.js \
+/home/aman/Projects/hackgenda/platforms/android/assets/www/js/cdv-plugin-fb-connect.js \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/js/index.js \
+/home/aman/Projects/hackgenda/platforms/android/assets/www/js/facebook-js-sdk.js \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/js/iscroll.js \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/js/app.js \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/js/snap.min.js \
