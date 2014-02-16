@@ -107,7 +107,7 @@ function request_get(url, callback) {
     } else if (window.ActiveXObject) { // IE 8 and older
         httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
     }
-    httpRequest.onreadystatechange = function () {      
+    httpRequest.onreadystatechange = function () {
         if (httpRequest.readyState === 4) {
             if (httpRequest.status === 200 || httpRequest.status === 0) {
                 callback.apply(this, Array.prototype.slice.call(arguments));

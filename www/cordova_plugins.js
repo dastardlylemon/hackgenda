@@ -20,13 +20,21 @@ module.exports = [
         "clobbers": [
             "window.open"
         ]
+    },
+    {
+        "file": "plugins/it.mobimentum.phonegapspinnerplugin/www/spinnerplugin.js",
+        "id": "it.mobimentum.phonegapspinnerplugin.SpinnerPlugin",
+        "clobbers": [
+            "window.spinnerplugin"
+        ]
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
     "org.apache.cordova.console": "0.2.7",
-    "org.apache.cordova.inappbrowser": "0.3.1"
+    "org.apache.cordova.inappbrowser": "0.3.1",
+    "it.mobimentum.phonegapspinnerplugin": "1.0.0"
 }
 // BOTTOM OF METADATA
 });
