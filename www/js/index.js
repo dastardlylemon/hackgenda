@@ -81,6 +81,11 @@ function addEvent(element, eventName, func) {
     }
 };
 
+function setTitle(title) {
+    var navbar = document.getElementById('navbar');
+    navbar.innerHTML = title;
+}
+
 var snapper, sidebar_open;
 
 function initSlidebar() {
@@ -176,6 +181,41 @@ function didSelectSchedule() {
                 var json = JSON.parse(response.target.response);
                 renderSchedule(json);
                 });
+    setTitle('SCHEDULE');
+    snapper.close();
+}
+
+function didSelectSponsors() {
+    request_get("http://hackgenda.herokuapp.com/mobile/sponsor", function (response) {
+                var json = JSON.parse(response.target.response);
+                spinner.spin();
+                var elements = new Array();
+                json.forEach(function (vv, ii) {
+                             var sponsorCells = document.createElement('ul');
+                             sponsorCells.setAttribute('class', 'topcoat-list__container');
+                                              var sponsorCell = document.createElement('li');
+                                              sponsorCell.setAttribute('class', 'topcoat-list__item');
+                                              var sponsorName = document.createElement('h2');
+                                              sponsorName.innerHTML = vv.name;
+                                              var sponsorDesc = document.createElement('span');
+                                              sponsorDesc.innerHTML = vv.description;
+                                              sponsorCell.appendChild(sponsorName);
+                                              sponsorCell.appendChild(sponsorDesc);
+                                              sponsorCells.appendChild(sponsorCell);
+                             elements.push(sponsorCells);
+                             });
+                spinner.stop();
+                var list = document.getElementById('scroller');
+                list.innerHTML = "";
+                elements.forEach(function (v, i) {
+                                 list.appendChild(v);
+                                 });
+                var h = document.getElementById('scroller').scrollHeight * (1/3);
+                document.getElementById('wrapper').setAttribute("style","height:"+h+"px");
+                myScroll = new IScroll('#wrapper');
+                save_state();
+                });
+    setTitle('SPONSORS');
     snapper.close();
 }
 
@@ -192,7 +232,7 @@ function login() {
     global_state["username"] = username;
     global_state["id"] = Math.floor(Math.random()*10);
     save_state();
-    didSelectSchedule();
+    updateUpdatesView();
 }
 
 function gotologin() {
@@ -210,32 +250,40 @@ function login_or_schedule(){
 }
 
 function updateUpdatesView() {
-    request_get("http://hackgenda.herokuapp.com/test/updates.json", function(response) {
+    request_get("http://hackgenda.herokuapp.com/mobile/announcement", function(response) {
                 var updates = [];
                 json = JSON.parse(response.target.response);
-                updates = json["updates"];
-                updates.forEach(function (update) {
+                updates = json;
+                var elements = updates.map(function (update) {
                                 var update_el = document.createElement('li');
+                                update_el.setAttribute('class', 'topcoat-list__item');
                                 var name = document.createElement('h2');
                                 name.innerHTML = update['name'];
                                 update_el.appendChild(name);
                                 var desc = document.createElement('h3');
                                 desc.innerHTML = update['description'];
                                 update_el.appendChild(desc);
-                                var author = document.createElement('p');
+                                var author = document.createElement('span');
                                 author.innerHTML = update['author'];
-                                update_el.appendChild(author);
-                                var time = document.createElement('p');
+                                var time = document.createElement('span');
                                 time.innerHTML = update['time'];
-                                update_el.appendChild(time);
+                                var credit = document.createElement('h6');
+                                           credit.innerHTML = "By " + update['author'] + " | " + update['time'];
+                                update_el.appendChild(credit);
+                                             return update_el;
                                 });
                 var updates_el = document.createElement('ul');
-                updates.forEach(function(update_li) {
+                updates_el.setAttribute('class', 'topcoat-list__container');
+                elements.forEach(function(update_li) {
                                 updates_el.appendChild(update_li);
                                 });
                 var list = document.getElementById('scroller');
                 list.innerHTML = "";
                 list.appendChild(updates_el);
+                var h = document.getElementById('scroller').scrollHeight * (1/3);
+                document.getElementById('wrapper').setAttribute("style","height:"+h+"px");
                 });
+                myScroll = new IScroll('#wrapper');
+    setTitle('ANNOUNCEMENTS');
     snapper.close();
 }
