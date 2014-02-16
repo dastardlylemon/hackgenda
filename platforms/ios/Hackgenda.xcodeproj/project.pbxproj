@@ -40,6 +40,8 @@
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
 		F840E1F1165FE0F500CFE078 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = F840E1F0165FE0F500CFE078 /* config.xml */; };
 		41F4AD48173D4C79913678EE /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC5E7FB709A41D7BC068444 /* CDVInAppBrowser.m */; };
+		56C5A38A4CBD46B7A7E3DB15 /* AppDelegate+notification.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D088FC38294315B020AEBA /* AppDelegate+notification.m */; };
+		86527171E24144029AFB4A0B /* PushPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = F89EE27C0DE447E4A1DDDF78 /* PushPlugin.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +105,10 @@
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "Hackgenda/config.xml"; sourceTree = "<group>"; };
 		4AC5E7FB709A41D7BC068444 /* CDVInAppBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVInAppBrowser.m"; path = "org.apache.cordova.inappbrowser/CDVInAppBrowser.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		86447457677E4AD9BEC709D3 /* CDVInAppBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVInAppBrowser.h"; path = "org.apache.cordova.inappbrowser/CDVInAppBrowser.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		D4D088FC38294315B020AEBA /* AppDelegate+notification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "AppDelegate+notification.m"; path = "com.phonegap.plugins.PushPlugin/AppDelegate+notification.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		F89EE27C0DE447E4A1DDDF78 /* PushPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "PushPlugin.m"; path = "com.phonegap.plugins.PushPlugin/PushPlugin.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		E8E31539CBA9424DB37154BF /* AppDelegate+notification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "AppDelegate+notification.h"; path = "com.phonegap.plugins.PushPlugin/AppDelegate+notification.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		68D12BF2F01D4681AA1C0A76 /* PushPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "PushPlugin.h"; path = "com.phonegap.plugins.PushPlugin/PushPlugin.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +229,10 @@
 			children = (
 				4AC5E7FB709A41D7BC068444 /* CDVInAppBrowser.m */,
 				86447457677E4AD9BEC709D3 /* CDVInAppBrowser.h */,
+				D4D088FC38294315B020AEBA /* AppDelegate+notification.m */,
+				F89EE27C0DE447E4A1DDDF78 /* PushPlugin.m */,
+				E8E31539CBA9424DB37154BF /* AppDelegate+notification.h */,
+				68D12BF2F01D4681AA1C0A76 /* PushPlugin.h */,
 			);
 			name = Plugins;
 			path = "Hackgenda/Plugins";
@@ -409,6 +419,8 @@
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
 				41F4AD48173D4C79913678EE /* CDVInAppBrowser.m in Sources */,
+				56C5A38A4CBD46B7A7E3DB15 /* AppDelegate+notification.m in Sources */,
+				86527171E24144029AFB4A0B /* PushPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

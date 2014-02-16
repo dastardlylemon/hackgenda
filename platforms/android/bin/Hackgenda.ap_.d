@@ -29,10 +29,8 @@
 /home/aman/Projects/hackgenda/platforms/android/assets/www/spec \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/icon.png \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/cordova.js \
-/home/aman/Projects/hackgenda/platforms/android/assets/www/js/cdv-plugin-fb-connect.js \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/js/index.js \
-/home/aman/Projects/hackgenda/platforms/android/assets/www/js/oauth.js \
-/home/aman/Projects/hackgenda/platforms/android/assets/www/js/facebook-js-sdk.js \
+/home/aman/Projects/hackgenda/platforms/android/assets/www/js/PushNotification.js \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/js/iscroll.js \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/js/app.js \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/js/snap.min.js \
@@ -116,8 +114,11 @@
 /home/aman/Projects/hackgenda/platforms/android/assets/www/font/SourceCodePro-ExtraLight.otf \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/font/SourceSansPro-LightIt.otf \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/font/SourceSansPro-Semibold.otf \
+/home/aman/Projects/hackgenda/platforms/android/assets/www/plugins/com.phonegap.plugins.PushPlugin \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/plugins/org.apache.cordova.console \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/plugins/org.apache.cordova.inappbrowser \
+/home/aman/Projects/hackgenda/platforms/android/assets/www/plugins/com.phonegap.plugins.PushPlugin/www \
+/home/aman/Projects/hackgenda/platforms/android/assets/www/plugins/com.phonegap.plugins.PushPlugin/www/PushNotification.js \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/plugins/org.apache.cordova.console/www \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/plugins/org.apache.cordova.console/www/logger.js \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/plugins/org.apache.cordova.console/www/console-via-logger.js \

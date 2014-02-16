@@ -1,3 +1,5 @@
+//regid = "APA91bFeehPji-ouPWj-XaeGP17-mykQ0wPyIOW1ODi6o6t9VrQW0wn2AYg_A8C7RNwGwlW4ZAoqVFH5WWzQOJ9FjiqelSPCvRCiDr7yGopycTg8SGrakcffpUwi2Lm0fhK3AmmuM4VkZglAUsTUc34Yh8LNkRxfwLKKNK1AdPU6u52McZG2IBw"
+//api_key = "AIzaSyAD1XCxREdkFYs1lcPOdSqeN6CePejywJI";
 var app = {
     // Application Constructor
     initialize: function() {
@@ -15,9 +17,45 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        initSlidebar();
-        login_or_schedule();
+        get_state();
+        if ('registered' in global_state) {
+        } else {
+            var pushNotification = window.plugins.pushNotification;
+            pushNotification.register(app.successHandler, app.errorHandler, {"senderID":"351988118019", "ecb": "app.onNotificationGCM"});
+        }
+//        initSlidebar();
+//        login_or_schedule();
     },
+    successHandler: function(result) {
+        return undefined;
+    },
+    errorHandler: function(error) {
+        return undefined;
+    },
+
+    onNotificationGCM: function(e) {
+        alert(e);
+        switch (e.event) {
+            case 'registered':
+                if (e.regid.length > 0) {
+                    alert("Regid " + e.regid);
+                    get_state();
+                    global_state['registered'] = true;
+                    save_state();
+                }
+                break;
+            case 'message':
+                alert("message =  " + e.message + " msgcnt = " + e.msgcnt);
+                console.log("message =  " + e.message + " msgcnt = " + e.msgcnt);
+                break;
+            case 'error':
+                alert("GCM error = " + e.msg);
+                break;
+            default:
+                alert('Unknown');
+                break;
+        }
+    }
     // Update DOM on a Received Event
     /*receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
@@ -154,9 +192,7 @@ function updateView(html, callback) {
 
 function getViewFromURL(url) {
     request_get(url, function (response) {
-        html = response.target.response;
-        content = document.getElementById('scroller');
-        content.innerHTML = html;
+        document.getElementById('scroller').innerHTML = response.target.response;
         snapper.close('left');
     });
 }
@@ -218,7 +254,7 @@ function createXMLHTTPObject() {
 }
 
 function twlogin() {
-    sendRequest("https://api.twitter.com/oauth/request_token", function (e) { console.log(e); }, {
+    sendRequest("https://api.twitter.com/oauth/request_token", function (e) { alert(e); }, {
         oauth_consumer_key : "IDFJkMbW1Ty3CzspMPcdTg",
         oauth_callback: "./logged_in.html"});
 }
@@ -227,6 +263,7 @@ function login() {
     username = document.getElementById('username').value;
     get_state();
     global_state["username"] = username;
+    global_state["id"] = Math.floor(Math.random()*10);
     save_state();
     didSelectSchedule();
 }
@@ -239,3 +276,4 @@ function login_or_schedule(){
         gotologin();
     }
 }
+
