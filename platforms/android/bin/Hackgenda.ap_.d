@@ -33,6 +33,7 @@
 /home/aman/Projects/hackgenda/platforms/android/assets/www/js/index.js \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/js/spin.min.js \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/js/jquery-2.0.3.min.js \
+/home/aman/Projects/hackgenda/platforms/android/assets/www/js/PushNotification.js \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/js/facebook-js-sdk.js \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/js/iscroll.js \
 /home/aman/Projects/hackgenda/platforms/android/assets/www/js/jquery.mobile-1.3.2.min.js \

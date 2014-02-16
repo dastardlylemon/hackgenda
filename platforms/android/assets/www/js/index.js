@@ -1,5 +1,3 @@
-localStorage.clear();
-
 global_state = {
     "sidebar_open": false,
     "update": [],
@@ -37,6 +35,12 @@ bindEvents: function () {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
 onDeviceReady: function () {
+    get_state();
+    if (!('registered' in global_state)) {
+        var a = 5;
+        var pushNotification = window.plugins.pushNotification;
+        pushNotification.register(app.successHandler, app.errorHandler, {"senderID":"351988118019", "ecb": "app.onNotificationGCM"});
+    }
     initSlidebar();
     var opts = {
         lines: 13, // The number of lines to draw
@@ -60,6 +64,42 @@ onDeviceReady: function () {
     spinner = new Spinner(opts).spin(target);
     login_or_schedule();
 },
+    successHandler: function(result) {
+        return undefined;
+    },
+    errorHandler: function(error) {
+        return undefined;
+    },
+
+
+    onNotificationGCM: function(e) {
+        switch (e.event) {
+            case 'registered':
+                if (e.regid.length > 0) {
+                    //alert("Regid " + e.regid);
+                    //sendRequest("http://hackgenda.herokuapp.com/mobile/android", function (response) { return undefined; }, {"id": e.regid});
+                    request_get("http://hackgenda.herokuapp.com/mobile/android/" + e.regid, function (response) { return undefined;});
+                    get_state();
+                    global_state['registered'] = true;
+                    save_state();
+                    alert('You will now recieve notifications from us.');
+                    login_or_schedule();
+                }
+                break;
+            case 'message':
+                login_or_schedule();
+                //document.getElementById('debug').innerHTML = 'message = ' + e.message + ' msgcnt = ' + e.msgcnt);
+                break;
+            case 'error':
+                break;
+            default:
+                break;
+        }
+    }
+
+
+
+
     // Update DOM on a Received Event
     /*receivedEvent: function(id) {
      var parentElement = document.getElementById(id);
