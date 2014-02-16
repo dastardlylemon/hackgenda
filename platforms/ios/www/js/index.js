@@ -272,6 +272,7 @@ function updateUpdatesView() {
                                 update_el.appendChild(credit);
                                              return update_el;
                                 });
+                spinner.stop();
                 var updates_el = document.createElement('ul');
                 updates_el.setAttribute('class', 'topcoat-list__container');
                 elements.forEach(function(update_li) {
