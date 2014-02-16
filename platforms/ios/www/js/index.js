@@ -243,7 +243,7 @@ function gotologin() {
 function login_or_schedule(){
     get_state();
     if('username' in global_state) {
-        didSelectSchedule();
+        updateUpdatesView();
     } else {
         gotologin();
     }
