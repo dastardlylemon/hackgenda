@@ -1,5 +1,3 @@
-//regid = "APA91bFeehPji-ouPWj-XaeGP17-mykQ0wPyIOW1ODi6o6t9VrQW0wn2AYg_A8C7RNwGwlW4ZAoqVFH5WWzQOJ9FjiqelSPCvRCiDr7yGopycTg8SGrakcffpUwi2Lm0fhK3AmmuM4VkZglAUsTUc34Yh8LNkRxfwLKKNK1AdPU6u52McZG2IBw"
-//api_key = "AIzaSyAD1XCxREdkFYs1lcPOdSqeN6CePejywJI";
 var app = {
     // Application Constructor
     initialize: function() {
@@ -19,12 +17,14 @@ var app = {
     onDeviceReady: function() {
         get_state();
         if ('registered' in global_state) {
+            continue;
         } else {
             var pushNotification = window.plugins.pushNotification;
             pushNotification.register(app.successHandler, app.errorHandler, {"senderID":"351988118019", "ecb": "app.onNotificationGCM"});
         }
-//        initSlidebar();
-//        login_or_schedule();
+        //initSlidebar();
+        //login_or_schedule();
+        alert('ayo');
     },
     successHandler: function(result) {
         return undefined;
@@ -34,25 +34,25 @@ var app = {
     },
 
     onNotificationGCM: function(e) {
-        alert(e);
         switch (e.event) {
             case 'registered':
                 if (e.regid.length > 0) {
                     alert("Regid " + e.regid);
+                    //sendRequest("http://hackgenda.herokuapp.com/mobile/android", function (response) { return undefined; }, {"id": e.regid});
+                    request_get("http://hackgenda.herokuapp.com/mobile/android/" + e.regid, function (response) { return undefined;});
                     get_state();
                     global_state['registered'] = true;
                     save_state();
+                    alert('done');
                 }
                 break;
             case 'message':
-                alert("message =  " + e.message + " msgcnt = " + e.msgcnt);
-                console.log("message =  " + e.message + " msgcnt = " + e.msgcnt);
+                //YO DO SHIT HERE
+                //RELOAD UPDATES VIEW
                 break;
             case 'error':
-                alert("GCM error = " + e.msg);
                 break;
             default:
-                alert('Unknown');
                 break;
         }
     }
@@ -277,3 +277,33 @@ function login_or_schedule(){
     }
 }
 
+function updateUpdatesView() {
+    request_get("http://hackgenda.herokuapp.com/", function(response) {
+        var updates = [];
+        json = JSON.parse(response.target.response);
+        updates = json["updates"];
+        updates.forEach(function (update) {
+            var update_el = document.createElement('li');
+            var name = document.createElement('h2');
+            name.innerHTML = update['name'];
+            update_el.appendChild(name);
+            var desc = document.createElement('h3');
+            desc.innerHTML = update['description'];
+            update_el.appendChild(desc);
+            var author = document.createElement('p');
+            author.innerHTML = update['author'];
+            update_el.appendChild(author);
+            var time = document.createElement('p');
+            time.innerHTML = update['time'];
+            update_el.appendChild(time);
+        });
+        var updates_el = document.createElement('ul');
+        updates.forEach(function(update_li) {
+            updates_el.appendChild(update_li);
+        });
+        var list = document.getElementById('scroller');
+        list.innerHTML = "";
+        list.appendChild(updates_el);
+    });
+    snapper.close();
+}
